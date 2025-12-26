@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB; // ← LÍNEA AÑADIDA
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['paciente', 'administrador'])->default('paciente'); // ← CLAVE
             $table->rememberToken();
             $table->timestamps();
         });
@@ -34,10 +35,10 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        // 👇 ADMIN AUTOMÁTICO (AÑADIDO)
+        // Admin después de que la tabla exista con 'role'
         DB::table('users')->insert([
             'name' => 'Admin MedAlert',
-            'email' => 'dmin@urgencias.com',
+            'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'),
             'role' => 'administrador',
