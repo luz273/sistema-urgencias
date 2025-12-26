@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedAlert - Plataforma de Emergencias Médicas</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -18,8 +21,21 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
-        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out; }
-        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-fadeInUp { 
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        .animate-float { 
+            animation: float 3s ease-in-out infinite; 
+        }
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 
@@ -36,7 +52,7 @@
                     </div>
                     <div>
                         <span class="text-2xl font-bold text-gray-900">MedAlert</span>
-                        <p class="text-xs text-red-600 font-medium -mt-1">Emergencias Médicas</p>
+                        <p class="text-xs text-red-600 font-medium -mt-1">Urgencias medicas</p>
                     </div>
                 </div>
                 
@@ -49,25 +65,12 @@
 
                 <!-- Botones de Auth -->
                 <div class="flex items-center space-x-3">
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/dashboard') }}"
-                                class="bg-red-600 text-white px-6 py-2.5 rounded-lg hover:bg-red-700 transition font-medium shadow-md">
-                                Dashboard
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="text-gray-700 hover:text-red-600 px-5 py-2.5 rounded-lg hover:bg-gray-50 transition font-medium">
-                                Ingresar
-                            </a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    class="bg-red-600 text-white px-6 py-2.5 rounded-lg hover:bg-red-700 transition font-medium shadow-md">
-                                    Registrarse
-                                </a>
-                            @endif
-                        @endauth
-                    @endif
+                    <a href="/login" class="text-gray-700 hover:text-red-600 px-5 py-2.5 rounded-lg hover:bg-gray-50 transition font-medium">
+                        Ingresar
+                    </a>
+                    <a href="/register" class="bg-red-600 text-white px-6 py-2.5 rounded-lg hover:bg-red-700 transition font-medium shadow-md">
+                        Registrarse
+                    </a>
                 </div>
             </div>
         </div>
@@ -95,33 +98,21 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
-                        @auth
-                            <a href="{{ url('/dashboard') }}"
-                                class="inline-flex items-center justify-center bg-red-600 text-white px-8 py-4 rounded-xl hover:bg-red-700 transition font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
-                                Ir al Dashboard
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                                </svg>
-                            </a>
-                        @else
-                            <a href="{{ route('register') }}"
-                                class="inline-flex items-center justify-center bg-red-600 text-white px-8 py-4 rounded-xl hover:bg-red-700 transition font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
-                                Comenzar Ahora
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                                </svg>
-                            </a>
-                        @endauth
+                        <a href="/register" class="inline-flex items-center justify-center bg-red-600 text-white px-8 py-4 rounded-xl hover:bg-red-700 transition font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
+                            Comenzar Ahora
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </a>
                         
-                        <a href="#features"
-                            class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-red-600 hover:text-red-600 transition font-semibold">
+                        <a href="#features" class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-red-600 hover:text-red-600 transition font-semibold">
                             Conocer Más
                         </a>
                     </div>
                 </div>
 
                 <!-- Imagen Derecha -->
-                <div class="relative animate-fadeInUp" style="animation-delay: 0.2s;">
+                <div class="relative animate-fadeInUp delay-200">
                     <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-3xl p-12 shadow-2xl animate-float">
                         <div class="text-center">
                             <div class="mb-8">
@@ -303,19 +294,12 @@
                 Únete a la plataforma que está salvando vidas con tecnología de vanguardia
             </p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}"
-                        class="bg-white text-red-600 px-10 py-4 rounded-xl hover:bg-gray-50 transition font-bold shadow-2xl text-lg">
-                        Crear Cuenta Gratuita
-                    </a>
-                @endif
-                
-                @if (Route::has('login'))
-                    <a href="{{ route('login') }}"
-                        class="border-2 border-white text-white px-10 py-4 rounded-xl hover:bg-white hover:text-red-600 transition font-bold text-lg">
-                        Iniciar Sesión
-                    </a>
-                @endif
+                <a href="/register" class="bg-white text-red-600 px-10 py-4 rounded-xl hover:bg-gray-50 transition font-bold shadow-2xl text-lg">
+                    Crear Cuenta Gratuita
+                </a>
+                <a href="/login" class="border-2 border-white text-white px-10 py-4 rounded-xl hover:bg-white hover:text-red-600 transition font-bold text-lg">
+                    Iniciar Sesión
+                </a>
             </div>
         </div>
     </section>
@@ -365,10 +349,15 @@
             </div>
             
             <div class="border-t border-gray-800 pt-8 text-center text-sm">
-                <p>© {{ date('Y') }} MedAlert. Todos los derechos reservados. Salvando vidas con tecnología.</p>
+                <p id="year"></p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Actualizar año dinámicamente
+        document.getElementById('year').textContent = `© ${new Date().getFullYear()} MedAlert. Todos los derechos reservados. Salvando vidas con tecnología.`;
+    </script>
 
 </body>
 </html>
