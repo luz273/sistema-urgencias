@@ -3,10 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -15,7 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['paciente', 'administrador'])->default('paciente'); // ← CLAVE
             $table->rememberToken();
             $table->timestamps();
         });
@@ -34,19 +35,11 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
-
-        // Admin después de que la tabla exista con 'role'
-        DB::table('users')->insert([
-            'name' => 'Admin MedAlert',
-            'email' => 'admin@gmail.com',
-            'email_verified_at' => now(),
-            'password' => bcrypt('12345678'),
-            'role' => 'administrador',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('users');
