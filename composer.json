@@ -68,7 +68,7 @@
         ],
         "post-install-cmd": [
             "@php artisan config:clear",
-            "@php artisan migrate --force --graceful",
+            "@php artisan migrate --force",
             "@php artisan db:seed"
         ],
         "pre-package-uninstall": [
