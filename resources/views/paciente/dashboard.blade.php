@@ -5,17 +5,20 @@
 
 <style>
     :root {
-        --primary: #dc2626;
+        --primary: #dc2626; /* 🔴 ROJO PRINCIPAL */
         --primary-dark: #b91c1c;
+        --primary-light: #fee2e2;
         --success: #0d9488;
+        --success-light: #ecfdf5;
+        --white: #ffffff;
+        --bg-color: #f0f4f8;
         --gray-50: #f9fafb;
         --gray-100: #f3f4f6;
-        --gray-200: #e5e7eb;
+        --gray-200: #f4bfc43f;
         --gray-300: #d1d5db;
         --gray-600: #4b5563;
         --gray-800: #1f2937;
         --gray-900: #111827;
-        --white: #ffffff;
         --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
         --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -28,19 +31,20 @@
 
     body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        background-color: var(--gray-50);
+        background-color: #f0f4f8;
         color: var(--gray-900);
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         overflow-x: hidden;
+        line-height: 1.5;
     }
 
     /* Header Horizontal */
     .header {
         width: 100%;
         background: var(--white);
-        padding: 0.75rem 1.5rem;
+        padding: 0.6rem 1.25rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -54,31 +58,28 @@
     .logo-container {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.85rem;
     }
 
     .logo-icon {
-        width: 48px;
-        height: 48px;
-        background: var(--primary);
-        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--white);
-        font-size: 1.5rem;
+        box-shadow: 0 3px 8px rgba(220, 38, 38, 0.15);
         position: relative;
     }
 
     .logo-icon::before {
         content: '';
         position: absolute;
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         background: var(--white);
-        border-radius: 4px;
-        left: 8px;
-        top: 12px;
+        border-radius: 5px;
     }
 
     .logo-icon::after {
@@ -87,8 +88,7 @@
         color: var(--primary);
         font-weight: 700;
         font-size: 1rem;
-        left: 14px;
-        top: 16px;
+        z-index: 1;
     }
 
     .logo-text {
@@ -97,56 +97,55 @@
     }
 
     .logo-title {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: var(--gray-900);
     }
 
     .logo-subtitle {
-        font-size: 0.875rem;
+        font-size: 0.85rem;
         color: var(--primary);
-        font-weight: 600;
+        font-weight: 500;
     }
 
     .user-dropdown {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1.2rem;
         border-radius: var(--radius-sm);
-        background: var(--gray-100);
-        font-weight: 500;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        font-weight: 600;
         color: var(--gray-900);
         cursor: pointer;
-        transition: background 0.2s;
+        transition: all 0.25s ease;
+        box-shadow: var(--shadow-sm);
     }
 
     .user-dropdown:hover {
-        background: var(--gray-200);
-    }
-
-    .user-dropdown svg {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
+        box-shadow: var(--shadow);
+        transform: translateY(-2px);
+        border-color: var(--primary-light);
     }
 
     /* Menú Horizontal Centrado */
     .menu-container {
-        background-color: #faf8f8ff;
-        padding: 16px 0;
-        box-shadow: 0 2px 6px rgba(211, 47, 47, 0.05);
+        background-color: #ffffff;
+        padding: 0.9rem 0;
+        box-shadow: var(--shadow-sm);
+        border-bottom: 1px solid var(--gray-200);
         width: 100%;
     }
 
     .menu {
         display: flex;
         justify-content: center;
-        gap: 24px;
+        gap: 14px;
         flex-wrap: wrap;
         max-width: 900px;
         margin: 0 auto;
-        padding: 0 16px;
+        padding: 0 1rem;
         list-style: none;
     }
 
@@ -154,74 +153,89 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        padding: 12px 24px;
+        padding: 10px 18px;
         text-decoration: none;
-        color: #555;
-        font-size: 15px;
-        font-weight: 500;
+        color: var(--gray-600);
+        font-size: 0.95rem;
+        font-weight: 600;
         border-radius: 10px;
         transition: all 0.25s ease;
-        background-color: transparent;
+        background: var(--gray-50);
+        border: 2px solid transparent;
     }
 
     .menu-item:hover {
-        background-color: #f0f0f0;
-        color: #333;
+        background: var(--gray-200);
+        color: var(--gray-900);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
     }
 
     .menu-item.active {
-        background-color: #ffebee;
-        color: #d32f2f;
+        background: var(--primary);
+        color: var(--white);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
         font-weight: 600;
     }
 
     .menu-item span {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 
     /* Contenido principal */
     .main-content {
-        padding: 24px;
+        padding: 1.5rem;
         max-width: 1000px;
         margin: 0 auto;
         flex: 1;
+        width: 100%;
     }
 
     /* Bienvenida */
     .welcome-card {
         display: flex;
-        gap: 20px;
+        gap: 16px;
         background: white;
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-        margin-bottom: 32px;
+        border-radius: 14px;
+        padding: 1.5rem;
+        box-shadow: 0 3px 10px rgba(247, 120, 120, 0.94);
+        margin-bottom: 1.5rem;
         align-items: flex-start;
-        border-left: 4px solid #d32f2f;
+        border-left: 4px solid var(--primary);
     }
 
     .welcome-icon {
-        font-size: 32px;
+        font-size: 28px;
         flex-shrink: 0;
+        animation: wave 2s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(18deg); }
+        75% { transform: rotate(-18deg); }
     }
 
     .welcome-text h2 {
         margin: 0 0 12px;
-        font-size: 24px;
-        color: #333;
+        font-size: 1.6rem;
+        color: var(--gray-900);
+        font-weight: 700;
     }
 
     .welcome-body {
-        margin: 0 0 16px;
-        color: #666;
-        line-height: 1.5;
+        margin: 0 0 14px;
+        color: var(--gray-700);
+        line-height: 1.6;
+        font-size: 1rem;
     }
 
     .welcome-list {
         padding-left: 20px;
         margin: 0;
-        color: #555;
-        line-height: 1.6;
+        color: var(--gray-700);
+        line-height: 1.7;
+        font-size: 1rem;
     }
 
     .welcome-list li {
@@ -233,16 +247,15 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 24px;
+        margin-bottom: 1.5rem;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 1rem;
     }
 
     .page-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: #333;
-        margin: 0;
+        font-size: 1.85rem;
+        font-weight: 800;
+        color: var(--gray-900);
     }
 
     .btn-group {
@@ -254,91 +267,120 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        padding: 12px 20px;
+        padding: 10px 20px;
         border: none;
         border-radius: 10px;
-        font-size: 15px;
-        font-weight: 600;
+        font-size: 1rem;
+        font-weight: 700;
         cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        transition: all 0.25s ease;
+        box-shadow: var(--shadow);
     }
 
     .btn-primary {
-        background-color: #d32f2f;
-        color: white;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: var(--white);
     }
 
     .btn-primary:hover {
-        background-color: #b71c1c;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(220, 38, 38, 0.35);
     }
 
     .btn-secondary {
-        background-color: #f5f5f5;
-        color: #555;
+        background: var(--white);
+        color: var(--gray-800);
+        border: 2px solid var(--gray-200);
     }
 
     .btn-secondary:hover {
-        background-color: #e0e0e0;
-        transform: translateY(-2px);
+        background: var(--gray-50);
+        transform: translateY(-3px);
+        border-color: var(--gray-300);
     }
 
     /* Tarjetas de estadísticas */
     .cards {
         display: flex;
-        gap: 24px;
-        margin-bottom: 32px;
+        gap: 18px;
+        margin-bottom: 1.5rem;
         flex-wrap: wrap;
     }
 
     .card {
         flex: 1;
-        min-width: 200px;
-        background: white;
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        min-width: 180px;
+        background: var(--white);
+        border-radius: 14px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
         text-align: center;
-        transition: transform 0.2s;
+        transition: all 0.25s ease;
+        border: 1px solid var(--gray-200);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--primary-dark));
     }
 
     .card:hover {
-        transform: translateY(-4px);
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
     }
 
-    .card-header {
-        margin-bottom: 12px;
+    .card-today::before {
+        background: linear-gradient(90deg, #dc2626, #f97316);
+    }
+
+    .card-total::before {
+        background: linear-gradient(90deg, #2563eb, #7c3aed);
     }
 
     .card-title {
-        font-size: 14px;
+        font-size: 0.9rem;
         font-weight: 700;
-        color: #666;
+        color: var(--gray-600);
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.2px;
+        margin-bottom: 12px;
     }
 
     .card-value {
-        font-size: 40px;
+        font-size: 2.4rem;
         font-weight: 800;
-        color: #333;
         margin: 8px 0;
-    }
-
-    .card-footer {
-        font-size: 14px;
-        color: #888;
-        font-weight: 500;
+        background: linear-gradient(135deg, var(--gray-900), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     .card-today .card-value {
-        color: #d32f2f;
+        background: linear-gradient(135deg, #dc2626, #f97316);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     .card-total .card-value {
-        color: #1976d2;
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .card-footer {
+        font-size: 0.95rem;
+        color: var(--gray-600);
+        font-weight: 600;
     }
 
     /* Panel de Emergencia */
@@ -348,7 +390,7 @@
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(6px);
+        backdrop-filter: blur(8px);
         align-items: center;
         justify-content: center;
         z-index: 1000;
@@ -367,48 +409,60 @@
         max-width: 560px;
         box-shadow: var(--shadow-lg);
         overflow: hidden;
+        animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .panel-header {
         background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-        color: white;
+        color: var(--white);
         padding: 1.75rem;
         text-align: center;
     }
 
     .panel-header h3 {
-        font-size: 1.375rem;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 0.4rem;
     }
 
     .panel-header p {
-        opacity: 0.9;
-        font-size: 0.875rem;
+        opacity: 0.95;
+        font-size: 1rem;
     }
 
     .panel-body {
-        padding: 2rem;
+        padding: 1.75rem;
     }
 
-    .step { display: none; }
-    .step.active { display: block; animation: fadeStep 0.3s ease; }
+    .step {
+        display: none;
+    }
 
-    @keyframes fadeStep {
-        from { opacity: 0; transform: translateY(8px); }
+    .step.active {
+        display: block;
+        animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
     .step-indicator {
         display: flex;
         justify-content: center;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
+        gap: 0.6rem;
+        margin-bottom: 1.8rem;
     }
 
     .step-dot {
-        width: 6px;
-        height: 6px;
+        width: 7px;
+        height: 7px;
         background: var(--gray-300);
         border-radius: 50%;
         transition: var(--transition);
@@ -416,112 +470,112 @@
 
     .step-dot.active {
         background: var(--primary);
-        width: 20px;
-        border-radius: 3px;
+        width: 22px;
+        border-radius: 4px;
     }
 
     .info-box {
-        background: var(--gray-50);
+        background: linear-gradient(135deg, var(--gray-50), var(--white));
         border-radius: var(--radius-sm);
-        padding: 1.25rem;
-        margin-bottom: 1.5rem;
+        padding: 1.4rem;
+        margin-bottom: 1.4rem;
         border: 1px solid var(--gray-200);
     }
 
     .info-row {
         display: flex;
         justify-content: space-between;
-        padding: 0.5rem 0;
-        font-size: 0.875rem;
+        padding: 0.7rem 0;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--gray-200);
     }
 
-    .info-label { color: var(--gray-600); font-weight: 600; }
-    .info-value { color: var(--gray-900); font-weight: 600; }
+    .info-row:last-child {
+        border-bottom: none;
+    }
+
+    .info-label {
+        color: var(--gray-600);
+        font-weight: 600;
+    }
+
+    .info-value {
+        color: var(--gray-900);
+        font-weight: 700;
+    }
 
     .map-preview {
-        height: 180px;
+        height: 170px;
         border-radius: var(--radius-sm);
         overflow: hidden;
-        margin: 1.25rem 0;
-        border: 1px solid var(--gray-200);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        font-size: 0.875rem;
-        background: #fafafa;
-        position: relative;
+        margin: 1.3rem 0;
+        border: 2px solid var(--gray-200);
+        box-shadow: var(--shadow-sm);
     }
 
     .panel-actions {
         display: flex;
-        gap: 1rem;
-        margin-top: 1.75rem;
+        gap: 1.1rem;
+        margin-top: 1.8rem;
     }
 
     .status-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.375rem 0.875rem;
-        background: #ecfdf5;
+        padding: 0.5rem 1rem;
+        background: var(--success-light);
         color: var(--success);
         border-radius: var(--radius-sm);
-        font-weight: 600;
-        font-size: 0.875rem;
-        border: 1px solid #a7f3d0;
-    }
-
-    .spinner {
-        width: 16px;
-        height: 16px;
-        border: 2px solid rgba(0,0,0,0.1);
-        border-top-color: currentColor;
-        border-radius: 50%;
-        animation: spin 0.6s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .loading-spinner {
-        text-align: center;
-        padding: 2rem 0;
+        font-weight: 700;
+        font-size: 0.9rem;
+        border: 2px solid #a7f3d0;
     }
 
     .success-icon {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
         text-align: center;
         margin: 1rem 0;
         color: var(--success);
     }
 
+    .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: var(--white);
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
     /* Modal Ubicación */
     .map-container {
-        height: 350px;
+        height: 300px;
         border-radius: var(--radius-sm);
         overflow: hidden;
         margin-top: 1rem;
         border: 1px solid var(--gray-200);
-        position: relative;
     }
 
     .coords-info {
-        margin-top: 1.25rem;
-        padding: 0.875rem;
-        background: var(--gray-50);
-        border-radius: var(--radius-sm);
+        margin-top: 1.2rem;
         text-align: center;
-        font-size: 0.875rem;
-        font-weight: 500;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--gray-600);
     }
 
     /* Footer */
     .footer {
-        width: 100%;
-        background: #f0f7ff;
-        color: var(--gray-900);
-        padding: 2rem 2rem 1rem;
+        background: #1e293b;
+        color: #94a3b8;
+        padding: 2rem 1.5rem 1rem;
         margin-top: auto;
+        width: 100%;
         border-top: 1px solid var(--gray-200);
     }
 
@@ -534,61 +588,77 @@
     }
 
     .footer-section h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--gray-900);
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #ffffff;
         margin-bottom: 1rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+        color: var(--gray-700);
+        text-decoration: none;
+        font-weight: 500;
+        line-height: 1.6;
+        transition: color 0.2s;
+        font-size: 0.95rem;
+    }
+
+    .footer-section a:hover {
+        color: var(--primary);
     }
 
     .footer-section ul {
         list-style: none;
         padding: 0;
-        margin: 0;
     }
 
     .footer-section li {
-        margin: 0.5rem 0;
-        font-size: 0.875rem;
-    }
-
-    .footer-section a {
-        color: var(--gray-600);
-        text-decoration: none;
-    }
-
-    .footer-section a:hover {
-        color: var(--primary);
-        text-decoration: underline;
+        margin: 0.6rem 0;
     }
 
     .footer-bottom {
         text-align: center;
-        padding-top: 1rem;
-        font-size: 0.875rem;
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
         color: var(--gray-600);
         border-top: 1px solid var(--gray-200);
-        margin-top: 1.5rem;
+        font-weight: 500;
     }
 
     @media (max-width: 768px) {
-        .header { flex-direction: column; align-items: stretch; gap: 1rem; }
-        .logo-container { width: 100%; justify-content: space-between; }
-        .menu { flex-direction: column; gap: 0.5rem; }
-        .welcome-card { flex-direction: column; gap: 0.5rem; }
-        .page-header { flex-direction: column; align-items: stretch; }
-        .btn-group { width: 100%; }
-        .btn { width: 100%; justify-content: center; }
-        .cards { grid-template-columns: 1fr; }
-        .panel-actions { flex-direction: column; }
-        .panel-content, .modal-content { width: 95%; }
-        .footer-content { gap: 1rem; }
+        .header {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .menu {
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .welcome-card {
+            flex-direction: column;
+        }
+        .page-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .btn-group {
+            flex-direction: column;
+        }
+        .cards {
+            grid-template-columns: 1fr;
+        }
+        .panel-actions {
+            flex-direction: column;
+        }
     }
 </style>
 
 <!-- Menú Horizontal Mejorado -->
 <div class="menu-container">
     <div class="menu">
-        <a href="#" class="menu-item active">
+        <a href="{{ route('dashboard') }}" class="menu-item active">
             <span>📊</span> Dashboard
         </a>
         <a href="{{ route('emergencia.nueva') }}" class="menu-item">
@@ -601,7 +671,7 @@
             <span>🗺️</span> Ubicación
         </a>
         <a href="{{ route('paciente.perfil') }}" class="menu-item {{ request()->routeIs('paciente.perfil') ? 'active' : '' }}">
-            <span>🩺</span> Mi Perfil Médico
+            <span>🩺</span> Mi Perfil 
         </a>
     </div>
 </div>
@@ -610,15 +680,15 @@
     <div class="welcome-card">
         <div class="welcome-icon">👋</div>
         <div class="welcome-text">
-            <h2 class="welcome-title">¡Hola, {{ Auth::user()->name ?? 'Usuario' }}!</h2>
+            <h2>¡Hola, {{ Auth::user()->name ?? 'Usuario' }}!</h2>
             <p class="welcome-body">
                 Este es tu <strong>Dashboard de Emergencias</strong>. Aquí puedes:
             </p>
             <ul class="welcome-list">
-                <li>📊 Reportar una emergencia con un solo clic (usando tu ubicación actual)</li>
-                <li>📈 Ver cuántas emergencias se han registrado hoy y este mes</li>
-                <li>📁 Revisar tu historial de reportes</li>
-                <li>📍 Ver tu ubicación exacta en el mapa</li>
+                <li>📊 Reportar una emergencia con un solo clic</li>
+                <li>📈 Ver estadísticas de tus reportes</li>
+                <li>📁 Revisar tu historial completo</li>
+                <li>📍 Ver tu ubicación en tiempo real</li>
             </ul>
         </div>
     </div>
@@ -637,16 +707,12 @@
 
     <div class="cards">
         <div class="card card-today">
-            <div class="card-header">
-                <span class="card-title">HOY</span>
-            </div>
+            <div class="card-title">Hoy</div>
             <div class="card-value">3</div>
             <div class="card-footer">+2 desde ayer</div>
         </div>
         <div class="card card-total">
-            <div class="card-header">
-                <span class="card-title">TOTAL</span>
-            </div>
+            <div class="card-title">Total</div>
             <div class="card-value">27</div>
             <div class="card-footer">Este mes</div>
         </div>
@@ -671,7 +737,7 @@
                 <div class="info-box">
                     <div class="info-row">
                         <span class="info-label">📍 Ubicación</span>
-                        <span class="info-value" id="location-coords">Buscando con GPS de alta precisión…</span>
+                        <span class="info-value" id="location-coords">Buscando GPS...</span>
                     </div>
                     <div class="info-row">
                         <span class="info-label">⏰ Hora</span>
@@ -683,12 +749,12 @@
                     </div>
                 </div>
                 <div id="map-preview" class="map-preview">
-                    Cargando mapa de ubicación…
+                    Cargando mapa...
                 </div>
                 <div class="panel-actions">
                     <button class="btn btn-secondary" onclick="App.closePanel()">Cancelar</button>
                     <button class="btn btn-primary" id="btn-confirm" disabled>
-                        <span>🔍</span> Localizando…
+                        <span>🔍</span> Localizando...
                     </button>
                 </div>
             </div>
@@ -706,16 +772,10 @@
                             <span class="status-badge">✓ Registrada</span>
                         </span>
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">Ubicación</span>
-                        <span class="info-value" id="final-coords">--</span>
-                    </div>
                 </div>
                 <div class="panel-actions">
                     <button class="btn btn-secondary" onclick="App.closePanel()">Cerrar</button>
-                    <button class="btn btn-primary" onclick="window.location.href='{{ route('mis.emergencias') }}'">
-                        Ver Historial
-                    </button>
+                    <button class="btn btn-primary" onclick="window.location.href='{{ route('mis.emergencias') }}'">Ver Historial</button>
                 </div>
             </div>
         </div>
@@ -725,13 +785,13 @@
 <!-- Modal Ubicación -->
 <div id="modal" class="modal">
     <div class="modal-content">
-        <div class="panel-header" style="background: #1f2937;">
+        <div class="panel-header" style="background: linear-gradient(135deg, #1f2937, #374151);">
             <h3>📍 Tu Ubicación</h3>
             <p>Haz clic fuera para cerrar</p>
         </div>
         <div class="panel-body">
             <div id="map" class="map-container"></div>
-            <div id="coords" class="coords-info">Cargando...</div>
+            <div id="coords" class="coords-info">Cargando ubicación...</div>
         </div>
     </div>
 </div>
@@ -749,7 +809,6 @@ const App = {
 
     init() {
         const emergencyBtn = document.getElementById('btn-emergency');
-        const confirmBtn = document.getElementById('btn-confirm');
         const mapBtn = document.getElementById('btn-map');
         const modal = document.getElementById('modal');
         const panel = document.getElementById('emergency-panel');
@@ -758,13 +817,6 @@ const App = {
             emergencyBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 this.sendEmergency();
-            });
-        }
-
-        if (confirmBtn) {
-            confirmBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.confirmEmergency();
             });
         }
 
@@ -799,11 +851,12 @@ const App = {
             return;
         }
 
-        document.getElementById('location-coords').textContent = 'Buscando con GPS de alta precisión…';
+        const locationEl = document.getElementById('location-coords');
         const btn = document.getElementById('btn-confirm');
+        if (locationEl) locationEl.textContent = 'Buscando con GPS...';
         if (btn) {
             btn.disabled = true;
-            btn.innerHTML = '<span>🔍</span> Localizando…';
+            btn.innerHTML = '<span>🔍</span> Localizando...';
         }
 
         const options = {
@@ -813,17 +866,17 @@ const App = {
         };
 
         navigator.geolocation.getCurrentPosition(
-            (position) => this.onPositionSuccess(position, btn),
-            (error) => this.onPositionError(error, btn),
+            (position) => this.onPositionSuccess(position),
+            (error) => this.onPositionError(error),
             options
         );
     },
 
-    onPositionSuccess(position, btn) {
+    onPositionSuccess(position) {
         const { latitude, longitude, accuracy } = position.coords;
 
         if (!this.isValidCoordinate(latitude, longitude)) {
-            this.onPositionError({ message: 'Coordenadas inválidas (0,0).' }, btn);
+            this.onPositionError({ code: 0, message: 'Coordenadas inválidas (0,0).' });
             return;
         }
 
@@ -858,17 +911,22 @@ const App = {
         document.getElementById('current-time').textContent = new Date().toLocaleTimeString('es-PE', {
             hour: '2-digit', minute: '2-digit'
         });
-        
+
         this.showPreviewMap(latitude, longitude);
 
+        const btn = document.getElementById('btn-confirm');
         if (btn) {
             btn.disabled = false;
             btn.innerHTML = '<span>✅</span> Confirmar Emergencia';
+            btn.onclick = (e) => {
+                e.preventDefault();
+                this.confirmEmergency();
+            };
         }
         this.isSubmitting = false;
     },
 
-    onPositionError(error, btn) {
+    onPositionError(error) {
         console.error('Error GPS:', error);
         let msg = 'No se pudo obtener tu ubicación.';
         if (error.code === 1) msg = 'Acceso denegado. Activa la ubicación y reintenta.';
@@ -877,10 +935,14 @@ const App = {
         else msg = error.message || 'Error desconocido.';
 
         document.getElementById('location-coords').textContent = `❌ ${msg}`;
+        const btn = document.getElementById('btn-confirm');
         if (btn) {
             btn.disabled = false;
             btn.innerHTML = '<span>🔄</span> Reintentar';
-            btn.onclick = () => this.retryLocation();
+            btn.onclick = (e) => {
+                e.preventDefault();
+                this.retryLocation();
+            };
         }
         this.isSubmitting = false;
     },
@@ -907,11 +969,14 @@ const App = {
     },
 
     async confirmEmergency() {
-        const btn = document.getElementById('btn-confirm');
-        if (!btn || btn.disabled || !this.currentPosition) return;
+        if (this.isSubmitting || !this.currentPosition) return;
+        this.isSubmitting = true;
 
-        btn.disabled = true;
-        btn.innerHTML = '<span class="spinner" style="border-top-color:white;"></span> Enviando...';
+        const btn = document.getElementById('btn-confirm');
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner" style="border-top-color:white;"></span> Enviando...';
+        }
 
         try {
             const { latitude, longitude, accuracy } = this.currentPosition.coords;
@@ -932,7 +997,6 @@ const App = {
             if (!response.ok) throw new Error(data.message || 'Error al registrar emergencia');
 
             document.getElementById('emergency-id').textContent = `#${data.id || '----'}`;
-            document.getElementById('final-coords').textContent = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
             document.getElementById('panel-title').textContent = '✅ ¡Emergencia Registrada!';
             document.getElementById('panel-subtitle').textContent = 'Tu alerta fue enviada con éxito';
             this.setStep(3);
@@ -941,14 +1005,18 @@ const App = {
             console.error(err);
             this.closePanel();
         } finally {
-            btn.disabled = false;
-            btn.textContent = 'Confirmar Emergencia';
+            this.isSubmitting = false;
         }
     },
 
     showPreviewMap(lat, lng) {
         const el = document.getElementById('map-preview');
-        if (this.previewMap) this.previewMap.remove();
+        if (this.previewMap) {
+            this.previewMap.remove();
+            this.previewMap = null;
+        }
+
+        el.textContent = '';
 
         this.previewMap = L.map(el, {
             zoomControl: false,
@@ -970,7 +1038,7 @@ const App = {
     setStep(stepNum) {
         document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.step-dot').forEach((d, i) => {
-            d.classList.toggle('active', i < stepNum);
+            d.classList.toggle('active', i === stepNum - 1);
         });
         const step = document.getElementById(`step-${stepNum}`);
         if (step) step.classList.add('active');
@@ -988,6 +1056,12 @@ const App = {
         }
         this.currentPosition = null;
         this.isSubmitting = false;
+        const btn = document.getElementById('btn-confirm');
+        if (btn) {
+            btn.innerHTML = '<span>🔍</span> Localizando...';
+            btn.disabled = true;
+            btn.onclick = null;
+        }
     },
 
     async showMap() {
@@ -1003,7 +1077,10 @@ const App = {
             });
 
             const { latitude, longitude } = position.coords;
-            if (this.map) this.map.remove();
+            if (this.map) {
+                this.map.remove();
+                this.map = null;
+            }
 
             this.map = L.map('map').setView([latitude, longitude], 15);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

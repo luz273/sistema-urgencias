@@ -16,6 +16,64 @@
         --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
     }
 
+    /* Barra de navegación según la segunda imagen, pero con el diseño limpio de la primera */
+    .nav-bar {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1rem 2rem;
+        background: white;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 12px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        background: white;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        font-size: 0.95rem;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .nav-item:hover,
+    .nav-item:focus {
+        background: #f1f5f9;
+        border-color: var(--text-secondary);
+        color: var(--text-primary);
+        outline: none;
+        transform: translateY(-1px);
+    }
+
+    .nav-item.active {
+        background: linear-gradient(135deg, var(--primary-red), #991b1b);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+
+    .nav-item.active:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+    }
+
+    .nav-icon {
+        font-size: 1.2rem;
+    }
+
+    /* Estilos generales (mantenidos pero ajustados) */
     .emergency-list-container {
         max-width: 1400px;
         margin: 0 auto;
@@ -86,10 +144,12 @@
         box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
     }
 
-    .btn-primary-custom:hover {
+    .btn-primary-custom:hover,
+    .btn-primary-custom:focus {
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
         color: white;
+        outline: none;
     }
 
     .btn-secondary-custom {
@@ -98,11 +158,13 @@
         border: 2px solid var(--border-color);
     }
 
-    .btn-secondary-custom:hover {
+    .btn-secondary-custom:hover,
+    .btn-secondary-custom:focus {
         border-color: var(--text-secondary);
         color: var(--text-primary);
         transform: translateY(-2px);
         box-shadow: var(--shadow-sm);
+        outline: none;
     }
 
     .filters-section {
@@ -147,6 +209,7 @@
     .filter-select:focus {
         outline: none;
         border-color: var(--info-blue);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
     }
 
     .empty-state {
@@ -191,11 +254,16 @@
         transition: all 0.3s ease;
         position: relative;
         animation: slideUp 0.5s ease;
+        display: block;
     }
 
     @keyframes slideUp {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
+    }
+
+    .emergency-card.filtered-out {
+        display: none !important;
     }
 
     .emergency-card:hover {
@@ -336,6 +404,19 @@
         line-height: 1.5;
     }
 
+    .card-media {
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .card-media img {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 8px;
+        object-fit: cover;
+        border: 1px solid var(--border-color);
+    }
+
     .card-footer-custom {
         padding: 1rem 1.25rem;
         background: var(--bg-light);
@@ -371,13 +452,16 @@
         justify-content: center;
         color: var(--text-secondary);
         text-decoration: none;
+        font-size: 1.1rem;
     }
 
-    .btn-icon:hover {
+    .btn-icon:hover,
+    .btn-icon:focus {
         transform: scale(1.1);
         border-color: var(--info-blue);
         color: var(--info-blue);
         background: #eff6ff;
+        outline: none;
     }
 
     .stats-section {
@@ -414,42 +498,60 @@
         font-weight: 600;
     }
 
+    .notification-toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        color: white;
+        font-weight: 600;
+        z-index: 10000;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        animation: slideIn 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
+    }
+
     @media (max-width: 968px) {
+        .nav-bar {
+            flex-direction: column;
+            padding: 1rem;
+        }
         .emergency-grid {
             grid-template-columns: 1fr;
         }
-
         .page-header {
             flex-direction: column;
             align-items: stretch;
         }
-
         .page-title h1 {
             font-size: 1.5rem;
         }
-
         .header-actions {
             width: 100%;
         }
-
         .btn-custom {
             flex: 1;
             justify-content: center;
         }
-
         .filters-grid {
             grid-template-columns: 1fr;
         }
-
         .stats-section {
             grid-template-columns: repeat(2, 1fr);
         }
-
         .card-header-custom {
             flex-direction: column;
             gap: 1rem;
         }
-
         .card-badges {
             align-items: start;
             flex-direction: row;
@@ -457,7 +559,26 @@
         }
     }
 </style>
-
+<!-- Menú Horizontal Mejorado -->
+<div class="menu-container">
+    <div class="menu">
+        <a href="{{ route('dashboard') }}" class="menu-item active">
+            <span>📊</span> Dashboard
+        </a>
+        <a href="{{ route('emergencia.nueva') }}" class="menu-item">
+            <span>📝</span> Reportar
+        </a>
+        <a href="{{ route('mis.emergencias') }}" class="menu-item">
+            <span>📋</span> Historial
+        </a>
+        <a href="#" id="btn-map" class="menu-item">
+            <span>🗺️</span> Ubicación
+        </a>
+        <a href="{{ route('paciente.perfil') }}" class="menu-item {{ request()->routeIs('paciente.perfil') ? 'active' : '' }}">
+            <span>🩺</span> Mi Perfil 
+        </a>
+    </div>
+</div>
 <div class="emergency-list-container">
     <!-- Header -->
     <div class="page-header">
@@ -469,12 +590,10 @@
         </div>
         <div class="header-actions">
             <a href="{{ route('emergencia.nueva') }}" class="btn-custom btn-primary-custom">
-                <span>➕</span>
-                Nueva Emergencia
+                <span>➕</span> Nueva Emergencia
             </a>
             <a href="{{ route('dashboard') }}" class="btn-custom btn-secondary-custom">
-                <span>←</span>
-                Dashboard
+                <span>←</span> Dashboard
             </a>
         </div>
     </div>
@@ -508,8 +627,8 @@
         <div class="filters-section">
             <div class="filters-grid">
                 <div class="filter-group">
-                    <label class="filter-label">Gravedad</label>
-                    <select class="filter-select" id="filter-gravedad">
+                    <label for="filter-gravedad" class="filter-label">Gravedad</label>
+                    <select class="filter-select" id="filter-gravedad" aria-label="Filtrar por gravedad">
                         <option value="">Todas</option>
                         <option value="leve">Leve</option>
                         <option value="moderado">Moderado</option>
@@ -517,8 +636,8 @@
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label class="filter-label">Estado</label>
-                    <select class="filter-select" id="filter-estado">
+                    <label for="filter-estado" class="filter-label">Estado</label>
+                    <select class="filter-select" id="filter-estado" aria-label="Filtrar por estado">
                         <option value="">Todos</option>
                         <option value="pendiente">Pendiente</option>
                         <option value="atendida">Atendida</option>
@@ -526,8 +645,8 @@
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label class="filter-label">Ordenar por</label>
-                    <select class="filter-select" id="filter-orden">
+                    <label for="filter-orden" class="filter-label">Ordenar por</label>
+                    <select class="filter-select" id="filter-orden" aria-label="Ordenar emergencias">
                         <option value="reciente">Más reciente</option>
                         <option value="antigua">Más antigua</option>
                         <option value="gravedad">Gravedad</option>
@@ -539,12 +658,11 @@
         <!-- Grid de Emergencias -->
         <div class="emergency-grid" id="emergency-grid">
             @foreach($emergencias as $e)
-            <div class="emergency-card" 
-                 data-gravedad="{{ $e->gravedad }}" 
+            <div class="emergency-card"
+                 data-gravedad="{{ $e->gravedad }}"
                  data-estado="{{ $e->estado }}"
                  data-fecha="{{ $e->created_at->timestamp }}">
-                
-                <!-- Header -->
+
                 <div class="card-header-custom">
                     <div class="card-id">
                         <span class="card-id-label">Emergencia</span>
@@ -552,31 +670,23 @@
                     </div>
                     <div class="card-badges">
                         <span class="badge-custom badge-severity-{{ $e->gravedad }}">
-                            @if($e->gravedad == 'critico')
-                                🔴 Crítico
-                            @elseif($e->gravedad == 'moderado')
-                                🟡 Moderado
-                            @else
-                                🟢 Leve
+                            @if($e->gravedad == 'critico') 🔴 Crítico
+                            @elseif($e->gravedad == 'moderado') 🟡 Moderado
+                            @else 🟢 Leve
                             @endif
                         </span>
                         <span class="badge-custom badge-status-{{ $e->estado }}">
-                            @if($e->estado == 'pendiente')
-                                ⏳ Pendiente
-                            @elseif($e->estado == 'atendida')
-                                ✅ Atendida
-                            @else
-                                🔒 Cerrada
+                            @if($e->estado == 'pendiente') ⏳ Pendiente
+                            @elseif($e->estado == 'atendida') ✅ Atendida
+                            @else 🔒 Cerrada
                             @endif
                         </span>
                     </div>
                 </div>
 
-                <!-- Body -->
                 <div class="card-body-custom">
                     <div class="card-type">
-                        <span>🚨</span>
-                        {{ $e->tipo_emergencia }}
+                        <span>🚨</span> {{ $e->tipo_emergencia }}
                     </div>
 
                     <div class="card-description">
@@ -584,41 +694,43 @@
                     </div>
 
                     <div class="card-location">
-                        <div class="location-title">
-                            <span>📍</span>
-                            Ubicación registrada
-                        </div>
+                        <div class="location-title"><span>📍</span> Ubicación registrada</div>
                         <div class="location-coords">
                             Lat: {{ number_format($e->latitud, 6) }}<br>
                             Lng: {{ number_format($e->longitud, 6) }}
                         </div>
                     </div>
+
+                    @if($e->archivo_multimedia)
+                        <div class="card-media">
+                            @php
+                                $ext = pathinfo($e->archivo_multimedia, PATHINFO_EXTENSION);
+                                $isImage = in_array(strtolower($ext), ['jpg', 'jpeg', 'png', 'gif', 'webp']);
+                            @endphp
+                            @if($isImage)
+                                <img src="{{ Storage::url($e->archivo_multimedia) }}" alt="Archivo adjunto">
+                            @else
+                                <div>📎 Archivo adjunto: {{ basename($e->archivo_multimedia) }}</div>
+                            @endif
+                        </div>
+                    @endif
                 </div>
 
-                <!-- Footer -->
                 <div class="card-footer-custom">
                     <div class="card-timestamp">
-                        <span>🕐</span>
-                        {{ $e->created_at->format('d/m/Y H:i') }}
+                        <span>🕐</span> {{ $e->created_at->format('d/m/Y H:i') }}
                     </div>
                     <div class="card-actions">
-                        <a href="{{ route('emergencia.mapa', $e->id) }}" 
-                           class="btn-icon" 
-                           title="Ver en mapa">
+                        <a href="{{ route('emergencia.mapa', $e->id) }}" class="btn-icon" title="Ver en mapa" aria-label="Ver en mapa">
                             🗺️
                         </a>
-                        <button class="btn-icon" 
-                                onclick="shareEmergency({{ $e->id }})" 
-                                title="Compartir">
+                        <button class="btn-icon" onclick="shareEmergency({{ $e->id }})" title="Compartir" aria-label="Compartir emergencia">
                             📤
                         </button>
                         @if($e->archivo_multimedia)
-                        <a href="{{ Storage::url($e->archivo_multimedia) }}" 
-                           class="btn-icon" 
-                           title="Ver archivo adjunto"
-                           target="_blank">
-                            📎
-                        </a>
+                            <a href="{{ Storage::url($e->archivo_multimedia) }}" class="btn-icon" title="Ver archivo adjunto" target="_blank" aria-label="Ver archivo adjunto">
+                                📎
+                            </a>
                         @endif
                     </div>
                 </div>
@@ -626,156 +738,112 @@
             @endforeach
         </div>
     @else
-        <!-- Estado Vacío -->
         <div class="empty-state">
             <div class="empty-state-icon">📭</div>
             <h3>No hay emergencias registradas</h3>
             <p>Aún no has reportado ninguna emergencia. Cuando lo hagas, aparecerán aquí.</p>
             <a href="{{ route('emergencia.nueva') }}" class="btn-custom btn-primary-custom">
-                <span>➕</span>
-                Registrar Primera Emergencia
+                <span>➕</span> Registrar Primera Emergencia
             </a>
         </div>
     @endif
 </div>
 
 <script>
-class EmergencyListManager {
-    constructor() {
-        this.cards = document.querySelectorAll('.emergency-card');
-        this.filterGravedad = document.getElementById('filter-gravedad');
-        this.filterEstado = document.getElementById('filter-estado');
-        this.filterOrden = document.getElementById('filter-orden');
-        this.init();
-    }
-
-    init() {
-        if (this.filterGravedad) {
-            this.filterGravedad.addEventListener('change', () => this.applyFilters());
-            this.filterEstado.addEventListener('change', () => this.applyFilters());
-            this.filterOrden.addEventListener('change', () => this.applyFilters());
-        }
-    }
-
-    applyFilters() {
-        const gravedad = this.filterGravedad.value;
-        const estado = this.filterEstado.value;
-        const orden = this.filterOrden.value;
-
-        let visibleCards = Array.from(this.cards);
-
-        // Filtrar por gravedad
-        if (gravedad) {
-            visibleCards = visibleCards.filter(card => 
-                card.dataset.gravedad === gravedad
-            );
+    class EmergencyListManager {
+        constructor() {
+            this.cards = Array.from(document.querySelectorAll('.emergency-card'));
+            this.filterGravedad = document.getElementById('filter-gravedad');
+            this.filterEstado = document.getElementById('filter-estado');
+            this.filterOrden = document.getElementById('filter-orden');
+            this.init();
         }
 
-        // Filtrar por estado
-        if (estado) {
-            visibleCards = visibleCards.filter(card => 
-                card.dataset.estado === estado
-            );
+        init() {
+            ['change', 'input'].forEach(event => {
+                this.filterGravedad?.addEventListener(event, () => this.applyFilters());
+                this.filterEstado?.addEventListener(event, () => this.applyFilters());
+                this.filterOrden?.addEventListener(event, () => this.applyFilters());
+            });
         }
 
-        // Ordenar
-        if (orden === 'reciente') {
-            visibleCards.sort((a, b) => 
-                parseInt(b.dataset.fecha) - parseInt(a.dataset.fecha)
-            );
-        } else if (orden === 'antigua') {
-            visibleCards.sort((a, b) => 
-                parseInt(a.dataset.fecha) - parseInt(b.dataset.fecha)
-            );
-        } else if (orden === 'gravedad') {
+        applyFilters() {
+            const gravedad = this.filterGravedad?.value || '';
+            const estado = this.filterEstado?.value || '';
+            const orden = this.filterOrden?.value || 'reciente';
+
+            let filtered = this.cards.filter(card => {
+                const matchesGravedad = !gravedad || card.dataset.gravedad === gravedad;
+                const matchesEstado = !estado || card.dataset.estado === estado;
+                return matchesGravedad && matchesEstado;
+            });
+
+            // Ordenar sin modificar el DOM
             const gravedadOrder = { 'critico': 3, 'moderado': 2, 'leve': 1 };
-            visibleCards.sort((a, b) => 
-                gravedadOrder[b.dataset.gravedad] - gravedadOrder[a.dataset.gravedad]
-            );
+            filtered.sort((a, b) => {
+                if (orden === 'reciente') {
+                    return b.dataset.fecha - a.dataset.fecha;
+                } else if (orden === 'antigua') {
+                    return a.dataset.fecha - b.dataset.fecha;
+                } else if (orden === 'gravedad') {
+                    return gravedadOrder[b.dataset.gravedad] - gravedadOrder[a.dataset.gravedad];
+                }
+                return 0;
+            });
+
+            // Actualizar clases
+            this.cards.forEach(card => card.classList.add('filtered-out'));
+            filtered.forEach(card => card.classList.remove('filtered-out'));
+
+            // Animar entrada (solo si se filtra por primera vez o cambia el orden)
+            filtered.forEach((card, i) => {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = `slideUp 0.5s ease ${i * 0.05}s`;
+                }, 10);
+            });
         }
-
-        // Ocultar todas las tarjetas
-        this.cards.forEach(card => {
-            card.style.display = 'none';
-        });
-
-        // Mostrar tarjetas filtradas en el orden correcto
-        const grid = document.getElementById('emergency-grid');
-        visibleCards.forEach(card => {
-            card.style.display = 'block';
-            grid.appendChild(card);
-        });
-
-        // Animar entrada
-        visibleCards.forEach((card, index) => {
-            card.style.animation = 'none';
-            setTimeout(() => {
-                card.style.animation = `slideUp 0.5s ease ${index * 0.05}s`;
-            }, 10);
-        });
     }
-}
 
-function shareEmergency(id) {
-    const shareData = {
-        title: `Emergencia #${id}`,
-        text: `Detalles de la emergencia #${id}`,
-        url: window.location.origin + '/emergencia/' + id + '/mapa'
-    };
+    function shareEmergency(id) {
+        const url = `${window.location.origin}/emergencia/${id}/mapa`;
+        const shareData = {
+            title: `Emergencia #${id}`,
+            text: `Detalles de la emergencia #${id}`,
+            url: url
+        };
 
-    if (navigator.share) {
-        navigator.share(shareData).catch(() => {});
-    } else {
-        // Fallback: copiar enlace
-        const url = window.location.origin + '/emergencia/' + id + '/mapa';
-        navigator.clipboard.writeText(url).then(() => {
-            showNotification('✅ Enlace copiado al portapapeles', 'success');
-        }).catch(() => {
-            showNotification('❌ Error al compartir', 'error');
-        });
+        if (navigator.share) {
+            navigator.share(shareData).catch(console.warn);
+        } else {
+            navigator.clipboard.writeText(url).then(() => {
+                showNotification('✅ Enlace copiado al portapapeles', 'success');
+            }).catch(() => {
+                showNotification('❌ No se pudo copiar el enlace', 'error');
+            });
+        }
     }
-}
 
-function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${type === 'success' ? '#059669' : '#dc2626'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        z-index: 10000;
-        animation: slideIn 0.3s ease;
-    `;
-    notification.textContent = message;
-    document.body.appendChild(notification);
+    function showNotification(message, type = 'info') {
+        const colors = {
+            success: '#059669',
+            error: '#dc2626',
+            info: '#2563eb'
+        };
+        const toast = document.createElement('div');
+        toast.className = 'notification-toast';
+        toast.style.backgroundColor = colors[type] || colors.info;
+        toast.textContent = message;
+        document.body.appendChild(toast);
 
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
-}
-
-// Inicializar
-document.addEventListener('DOMContentLoaded', () => {
-    new EmergencyListManager();
-});
-
-// Animaciones
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(400px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s forwards';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
     }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(400px); opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        new EmergencyListManager();
+    });
 </script>
 @endsection

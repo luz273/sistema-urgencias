@@ -17,10 +17,6 @@
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
         }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
         .animate-fadeInUp { 
             animation: fadeInUp 0.6s ease-out;
             animation-fill-mode: both;
@@ -39,36 +35,36 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-gray-50 to-gray-100 text-gray-900 antialiased">
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 text-gray-900 antialiased">
     
     <!-- Navbar Fijo -->
-    <nav class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-md z-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
-                    <div class="bg-red-600 p-2.5 rounded-xl shadow-md">
+                    <div class="bg-gradient-to-br from-red-600 to-red-700 p-2.5 rounded-xl shadow-lg">
                         <span class="text-2xl">🚑</span>
                     </div>
                     <div>
-                        <span class="text-2xl font-bold text-gray-900">MedAlert</span>
-                        <p class="text-xs text-red-600 font-medium -mt-1">Urgencias medicas</p>
+                        <span class="text-2xl font-bold text-slate-900">MedAlert</span>
+                        <p class="text-xs text-red-600 font-semibold -mt-1">Sistema de Urgencias</p>
                     </div>
                 </div>
                 
                 <!-- Links de navegación -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="text-gray-600 hover:text-red-600 transition font-medium">Características</a>
-                    <a href="#stats" class="text-gray-600 hover:text-red-600 transition font-medium">Estadísticas</a>
-                    <a href="#contact" class="text-gray-600 hover:text-red-600 transition font-medium">Contacto</a>
+                    <a href="#features" class="text-slate-600 hover:text-red-600 transition font-medium">Características</a>
+                    <a href="#stats" class="text-slate-600 hover:text-blue-600 transition font-medium">Estadísticas</a>
+                    <a href="#contact" class="text-slate-600 hover:text-slate-900 transition font-medium">Contacto</a>
                 </div>
 
                 <!-- Botones de Auth -->
                 <div class="flex items-center space-x-3">
-                    <a href="/login" class="text-gray-700 hover:text-red-600 px-5 py-2.5 rounded-lg hover:bg-gray-50 transition font-medium">
+                    <a href="/login" class="text-slate-700 hover:text-red-600 px-5 py-2.5 rounded-lg hover:bg-slate-50 transition font-medium">
                         Ingresar
                     </a>
-                    <a href="/register" class="bg-red-600 text-white px-6 py-2.5 rounded-lg hover:bg-red-700 transition font-medium shadow-md">
+                    <a href="/register" class="bg-red-600 text-white px-6 py-2.5 rounded-lg hover:bg-red-700 transition font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
                         Registrarse
                     </a>
                 </div>
@@ -87,14 +83,14 @@
                         <span class="text-sm font-semibold">Sistema Activo 24/7</span>
                     </div>
                     
-                    <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-                        Emergencias Médicas
-                        <span class="text-red-600 block mt-2">en Tiempo Real</span>
+                    <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                        <span class="block text-slate-900">Emergencias Médicas</span>
+                        <span class="block mt-2 text-red-600">en Tiempo Real</span>
                     </h1>
                     
-                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                        Sistema profesional de gestión de emergencias con GPS, comunicación en tiempo real 
-                        y coordinación eficiente entre equipos médicos.
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        Plataforma profesional que integra geolocalización GPS, comunicación instantánea 
+                        y coordinación eficiente para equipos de emergencia médica.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
@@ -105,7 +101,7 @@
                             </svg>
                         </a>
                         
-                        <a href="#features" class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-red-600 hover:text-red-600 transition font-semibold">
+                        <a href="#features" class="inline-flex items-center justify-center border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-xl hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition font-semibold">
                             Conocer Más
                         </a>
                     </div>
@@ -113,46 +109,46 @@
 
                 <!-- Imagen Derecha -->
                 <div class="relative animate-fadeInUp delay-200">
-                    <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-3xl p-12 shadow-2xl animate-float">
+                    <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-12 shadow-2xl animate-float border border-slate-200">
                         <div class="text-center">
                             <div class="mb-8">
-                                <span class="text-9xl">🚑</span>
+                                <span class="text-9xl drop-shadow-lg">🚑</span>
                             </div>
                             
                             <!-- Tarjetas de características -->
                             <div class="space-y-4">
-                                <div class="bg-white rounded-2xl p-5 shadow-lg">
+                                <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-200">
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center space-x-4">
-                                            <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center shadow-md">
+                                            <div class="w-14 h-14 bg-red-600 rounded-xl flex items-center justify-center shadow-md">
                                                 <span class="text-2xl">⚡</span>
                                             </div>
                                             <div class="text-left">
-                                                <p class="font-bold text-gray-900 text-lg">Respuesta Inmediata</p>
-                                                <p class="text-sm text-gray-500">Menos de 3 minutos</p>
+                                                <p class="font-bold text-slate-900 text-lg">Respuesta Inmediata</p>
+                                                <p class="text-sm text-red-600 font-semibold">Menos de 3 minutos</p>
                                             </div>
                                         </div>
-                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                             </svg>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="bg-white rounded-2xl p-5 shadow-lg">
+                                <div class="bg-white rounded-2xl p-5 shadow-lg border border-slate-200">
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center space-x-4">
-                                            <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
+                                            <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center shadow-md">
                                                 <span class="text-2xl">📍</span>
                                             </div>
                                             <div class="text-left">
-                                                <p class="font-bold text-gray-900 text-lg">GPS Preciso</p>
-                                                <p class="text-sm text-gray-500">Ubicación en tiempo real</p>
+                                                <p class="font-bold text-slate-900 text-lg">GPS Preciso</p>
+                                                <p class="text-sm text-blue-600 font-semibold">Ubicación en tiempo real</p>
                                             </div>
                                         </div>
-                                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                             </svg>
                                         </div>
@@ -167,116 +163,116 @@
     </section>
 
     <!-- Stats Section -->
-    <section id="stats" class="py-16 bg-white">
+    <section id="stats" class="py-16 bg-white shadow-sm">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl">
+                <div class="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl border border-red-200 transform hover:scale-105 transition">
                     <div class="text-5xl font-black text-red-600 mb-2">< 3min</div>
-                    <p class="text-sm text-gray-700 font-semibold">Tiempo de Respuesta</p>
+                    <p class="text-sm text-slate-700 font-semibold">Tiempo de Respuesta</p>
                 </div>
-                <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+                <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl border border-blue-200 transform hover:scale-105 transition">
                     <div class="text-5xl font-black text-blue-600 mb-2">24/7</div>
-                    <p class="text-sm text-gray-700 font-semibold">Disponibilidad</p>
+                    <p class="text-sm text-slate-700 font-semibold">Disponibilidad</p>
                 </div>
-                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl border border-green-200 transform hover:scale-105 transition">
                     <div class="text-5xl font-black text-green-600 mb-2">100%</div>
-                    <p class="text-sm text-gray-700 font-semibold">Cobertura GPS</p>
+                    <p class="text-sm text-slate-700 font-semibold">Cobertura GPS</p>
                 </div>
-                <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl">
-                    <div class="text-5xl font-black text-purple-600 mb-2">95%</div>
-                    <p class="text-sm text-gray-700 font-semibold">Tasa de Éxito</p>
+                <div class="text-center p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl border border-indigo-200 transform hover:scale-105 transition">
+                    <div class="text-5xl font-black text-indigo-600 mb-2">95%</div>
+                    <p class="text-sm text-slate-700 font-semibold">Tasa de Éxito</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
+    <section id="features" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
                     Características del Sistema
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Tecnología avanzada para salvar vidas de manera eficiente
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Tecnología avanzada diseñada para salvar vidas de manera eficiente
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group border-t-4 border-red-600">
+                    <div class="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Dashboard en Tiempo Real</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Dashboard en Tiempo Real</h3>
+                    <p class="text-slate-600 leading-relaxed">
                         Monitoreo centralizado de todas las emergencias activas con información actualizada al instante.
                     </p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group border-t-4 border-blue-600">
+                    <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Geolocalización GPS</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Geolocalización GPS</h3>
+                    <p class="text-slate-600 leading-relaxed">
                         Ubicación precisa y automática de emergencias con navegación optimizada para equipos de rescate.
                     </p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group border-t-4 border-amber-600">
+                    <div class="w-16 h-16 bg-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9l-5 4.74L18.18 22 12 18.77 5.82 22 7 13.74 2 9l6.91-.74L12 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Clasificación Inteligente</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Clasificación Inteligente</h3>
+                    <p class="text-slate-600 leading-relaxed">
                         Sistema de triaje que prioriza emergencias según severidad para optimizar recursos.
                     </p>
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group border-t-4 border-green-600">
+                    <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Comunicación Directa</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Comunicación Directa</h3>
+                    <p class="text-slate-600 leading-relaxed">
                         Chat en tiempo real entre operadores, médicos y pacientes para coordinación eficiente.
                     </p>
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group border-t-4 border-indigo-600">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Historial Completo</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Historial Completo</h3>
+                    <p class="text-slate-600 leading-relaxed">
                         Registro detallado de todas las emergencias con seguimiento y reportes personalizados.
                     </p>
                 </div>
 
                 <!-- Feature 6 -->
-                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition group border-t-4 border-orange-600">
+                    <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-lg">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Notificaciones Inteligentes</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Notificaciones Inteligentes</h3>
+                    <p class="text-slate-600 leading-relaxed">
                         Alertas instantáneas para todos los involucrados con actualizaciones de estado en tiempo real.
                     </p>
                 </div>
@@ -285,8 +281,9 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-r from-red-600 to-red-700 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
+    <section class="py-24 bg-gradient-to-r from-red-600 to-red-700 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
             <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
                 ¿Listo para transformar la atención de emergencias?
             </h2>
@@ -294,10 +291,10 @@
                 Únete a la plataforma que está salvando vidas con tecnología de vanguardia
             </p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="/register" class="bg-white text-red-600 px-10 py-4 rounded-xl hover:bg-gray-50 transition font-bold shadow-2xl text-lg">
+                <a href="/register" class="bg-white text-red-600 px-10 py-4 rounded-xl hover:bg-slate-50 transition font-bold shadow-2xl text-lg transform hover:scale-105">
                     Crear Cuenta Gratuita
                 </a>
-                <a href="/login" class="border-2 border-white text-white px-10 py-4 rounded-xl hover:bg-white hover:text-red-600 transition font-bold text-lg">
+                <a href="/login" class="border-2 border-white text-white px-10 py-4 rounded-xl hover:bg-white hover:text-red-600 transition font-bold text-lg transform hover:scale-105">
                     Iniciar Sesión
                 </a>
             </div>
@@ -305,12 +302,12 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-gray-900 text-gray-400 py-16">
+    <footer id="contact" class="bg-slate-900 text-slate-400 py-16">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="bg-red-600 p-2.5 rounded-xl">
+                        <div class="bg-red-600 p-2.5 rounded-xl shadow-lg">
                             <span class="text-2xl">🚑</span>
                         </div>
                         <span class="text-xl font-bold text-white">MedAlert</span>
@@ -348,7 +345,7 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+            <div class="border-t border-slate-800 pt-8 text-center text-sm">
                 <p id="year"></p>
             </div>
         </div>

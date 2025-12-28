@@ -174,7 +174,7 @@
             <span>🗺️</span> Ubicación
         </a>
         <a href="{{ route('paciente.perfil') }}" class="menu-item {{ request()->routeIs('paciente.perfil') ? 'active' : '' }}">
-            <span>🩺</span> Mi Perfil Médico
+            <span>🩺</span> Mi Perfil 
         </a>
     </div>
 </div>
